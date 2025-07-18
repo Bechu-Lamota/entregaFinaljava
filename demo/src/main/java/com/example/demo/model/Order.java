@@ -1,28 +1,28 @@
 package com.example.demo.model;
-import com.example.demo.model.User;
+
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "pedidos")
-
+@Table(name = "pedido")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate date = LocalDate.now();
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private String user;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     // OneToMany -> Crea una tabla intermedia que no controla la cascada ni la orfandad.
@@ -38,11 +38,7 @@ public class Order {
     // Agregamos la linea
     public void addLine(OrderList line) {
         list.add(line);
-        list.setOrder(this); // Importante para mantener la relacion bidireccional
+        line.setOrder(this); // bidireccionalidad
     }
-
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-
 }
+
