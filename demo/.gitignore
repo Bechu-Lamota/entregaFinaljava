@@ -32,6 +32,32 @@ build/
 ### VS Code ###
 .vscode/
 
+### HACER CORRER EL SERVIDOR###
+./mvnw spring-boot:run
+
+### PROBLEMAS CON LA INSTALACIÓN DE MYSQL EN MAC###
+sebastianlamota@MacBook-Pro-de-Sebastian ~ % mysql --version
+zsh: command not found: mysql
+sebastianlamota@MacBook-Pro-de-Sebastian ~ % export PATH="/usr/local/mysql/bin:$PATH"
+
+sebastianlamota@MacBook-Pro-de-Sebastian ~ % mysql --version
+mysql  Ver 8.0.42 for macos15 on arm64 (MySQL Community Server - GPL)
+sebastianlamota@MacBook-Pro-de-Sebastian ~ % mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.42 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
 
 ### GIT ###
 INIT -> Inicializa un nuevo repositorio
